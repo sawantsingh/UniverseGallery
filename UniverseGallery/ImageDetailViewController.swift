@@ -1,19 +1,17 @@
 //
-//  ViewController.swift
-//  UniverseGallery
+//  ImageDetailViewController.swift
+//  UniverseGalleryApp
 //
-//  Created by Kumar, Sawant on 08/09/22.
+//  Created by Kumar, Sawant on 09/09/22.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ImageDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
 }
-

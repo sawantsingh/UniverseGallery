@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import UniverseGallery
+@testable import UniverseGalleryApp
 
 class UniverseGalleryTests: XCTestCase {
 

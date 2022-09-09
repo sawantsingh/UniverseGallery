@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eiL-5Y-Fca">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="r0w-3k-OBl">
+            <objects>
+                <viewController storyboardIdentifier="APODImageViewController" id="eiL-5Y-Fca" customClass="APODViewController" customModule="UniverseGalleryApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZI0-Qu-HDV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jBv-7a-ari">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fv-vJ-ae4">
+                                <rect key="frame" x="20" y="718" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPn-Pi-aTS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="Vsm-wu-D7B">
+                                        <barButtonItem key="leftBarButtonItem" title="Search By Date" id="4jZ-iB-fEY">
+                                            <connections>
+                                                <action selector="search:" destination="eiL-5Y-Fca" id="j2E-X8-QtU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Add To Favorite" id="3A3-Li-edi">
+                                            <connections>
+                                                <action selector="addToFavorite:" destination="eiL-5Y-Fca" id="HNZ-zW-iRX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="yC1-zH-pNu">
+                                <rect key="frame" x="0.0" y="88" width="336" height="324.5"/>
+                                <connections>
+                                    <action selector="datePickerAction:" destination="eiL-5Y-Fca" eventType="valueChanged" id="McV-ca-E9x"/>
+                                </connections>
+                            </datePicker>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xPG-sA-svW">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x56-Yv-4ch"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5Fv-vJ-ae4" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" constant="20" id="02u-g5-1dv"/>
+                            <constraint firstItem="x56-Yv-4ch" firstAttribute="bottom" secondItem="jBv-7a-ari" secondAttribute="bottom" id="FIQ-Xn-oNk"/>
+                            <constraint firstItem="jBv-7a-ari" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" id="IsV-IL-e8g"/>
+                            <constraint firstItem="x56-Yv-4ch" firstAttribute="trailing" secondItem="5Fv-vJ-ae4" secondAttribute="trailing" constant="20" id="O86-fu-b6f"/>
+                            <constraint firstItem="yC1-zH-pNu" firstAttribute="top" secondItem="fPn-Pi-aTS" secondAttribute="bottom" id="RX3-Ws-STu"/>
+                            <constraint firstItem="xPG-sA-svW" firstAttribute="centerY" secondItem="ZI0-Qu-HDV" secondAttribute="centerY" id="TYY-5y-kOJ"/>
+                            <constraint firstItem="fPn-Pi-aTS" firstAttribute="trailing" secondItem="x56-Yv-4ch" secondAttribute="trailing" id="ZXf-sl-UBn"/>
+                            <constraint firstItem="jBv-7a-ari" firstAttribute="top" secondItem="fPn-Pi-aTS" secondAttribute="bottom" id="di4-PT-wf9"/>
+                            <constraint firstItem="x56-Yv-4ch" firstAttribute="trailing" secondItem="jBv-7a-ari" secondAttribute="trailing" id="exP-mg-mLZ"/>
+                            <constraint firstItem="xPG-sA-svW" firstAttribute="centerX" secondItem="ZI0-Qu-HDV" secondAttribute="centerX" id="gD2-Nq-pkz"/>
+                            <constraint firstItem="fPn-Pi-aTS" firstAttribute="top" secondItem="x56-Yv-4ch" secondAttribute="top" id="gf6-gb-jaF"/>
+                            <constraint firstItem="yC1-zH-pNu" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" id="pEA-RW-zAf"/>
+                            <constraint firstItem="x56-Yv-4ch" firstAttribute="bottom" secondItem="5Fv-vJ-ae4" secondAttribute="bottom" constant="120" id="qaJ-gT-27W"/>
+                            <constraint firstItem="fPn-Pi-aTS" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" id="uPq-BL-5ya"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="BZ3-cK-52v"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="xPG-sA-svW" id="PRy-cP-Xnz"/>
+                        <outlet property="datePicker" destination="yC1-zH-pNu" id="utq-tf-0oR"/>
+                        <outlet property="imageView" destination="jBv-7a-ari" id="r1x-Pg-WcD"/>
+                        <outlet property="navigationBar" destination="fPn-Pi-aTS" id="q4a-w2-XoZ"/>
+                        <outlet property="titleLabel" destination="5Fv-vJ-ae4" id="OCf-Ml-tqP"/>
+                        <segue destination="F0d-m5-rth" kind="presentation" id="OkR-EU-esO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xu2-Os-x8U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1997.1014492753625" y="130.58035714285714"/>
+        </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="WVu-oj-dNT">
+            <objects>
+                <viewController id="F0d-m5-rth" customClass="ImageDetailViewController" customModule="UniverseGalleryApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wdH-NK-I05">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yRh-To-BDf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fau-jI-Ut9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2813.04347826087" y="130.58035714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
