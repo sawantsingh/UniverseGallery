@@ -10,7 +10,7 @@ import ImageryFeed
 
 struct NetworkReacability {
     
-    static let isReachable = false
+    static let isReachable = true
 }
 
 final class LocalToRemoteFallback: FeedLoader {
@@ -24,11 +24,10 @@ final class LocalToRemoteFallback: FeedLoader {
     }
     
     func load(with startDate: String, endDate: String, completion: @escaping (LoadFeedResult) -> Void) {
-        if !NetworkReacability.isReachable {
-            self.loadFromRemote(with: startDate, endDate: endDate, completion: completion)
-            return
-        }
-        
+//        if !NetworkReacability.isReachable {
+//            self.loadFromRemote(with: startDate, endDate: endDate, completion: completion)
+//            return
+//        }
         
         local.load(with: startDate, endDate: endDate, completion: { [weak self] result in
             guard let self = self else {
@@ -36,7 +35,12 @@ final class LocalToRemoteFallback: FeedLoader {
             }
             switch result {
             case .success(let feed):
-                completion(.success(feed))
+                let filtered = feed.filter { $0.date == startDate }
+                if filtered.count > 0 {
+                    completion(.success(filtered))
+                } else {
+                    self.loadFromRemote(with: startDate, endDate: endDate, completion: completion)
+                }
             case .failure:
                 self.loadFromRemote(with: startDate, endDate: endDate, completion: completion)
             }

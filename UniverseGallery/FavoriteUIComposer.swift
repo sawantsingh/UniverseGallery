@@ -11,15 +11,15 @@ class FavoriteUIComposer {
     
     private init() {}
     
-    public static func composedWith() -> FavoriteViewController {
+    public static func composedWith() -> FavoriteTableViewController {
         let controller = makeViewController(title: "Favorite")
         return controller
     }
 
-    private static func makeViewController(title: String) -> FavoriteViewController {
-        let bundle = Bundle(for: FavoriteViewController.self)
+    private static func makeViewController(title: String) -> FavoriteTableViewController {
+        let bundle = Bundle(for: FavoriteTableViewController.self)
         let storyboard = UIStoryboard(name: "Favorite", bundle: bundle)
-        let viewController = storyboard.instantiateInitialViewController() as! FavoriteViewController
+        let viewController = storyboard.instantiateInitialViewController() as! FavoriteTableViewController
         viewController.title = title
         return viewController
     }

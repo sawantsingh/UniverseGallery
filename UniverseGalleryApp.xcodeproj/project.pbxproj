@@ -43,7 +43,6 @@
 		60261E3028CA70DA004E2589 /* APODUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E2F28CA70DA004E2589 /* APODUIComposer.swift */; };
 		60261E3228CA7BDE004E2589 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E3128CA7BDE004E2589 /* TabBarController.swift */; };
 		60261E3428CA7E43004E2589 /* APODViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E3328CA7E43004E2589 /* APODViewController.swift */; };
-		60261E3628CA7E5D004E2589 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E3528CA7E5D004E2589 /* FavoriteViewController.swift */; };
 		60261E3828CA7F4A004E2589 /* APOD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60261E3728CA7F4A004E2589 /* APOD.storyboard */; };
 		60261E3A28CA7F5C004E2589 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60261E3928CA7F5C004E2589 /* Favorite.storyboard */; };
 		60261E3C28CA80DB004E2589 /* FavoriteUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E3B28CA80DB004E2589 /* FavoriteUIComposer.swift */; };
@@ -54,6 +53,7 @@
 		60261E4828CB7E21004E2589 /* RemoteImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E4728CB7E21004E2589 /* RemoteImageDataLoader.swift */; };
 		60261E4B28CBA5E2004E2589 /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E4928CBA42C004E2589 /* DateFormatterHelper.swift */; };
 		60261E4D28CBA975004E2589 /* LocalToRemoteFallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E4C28CBA975004E2589 /* LocalToRemoteFallback.swift */; };
+		60261E5328CD00F1004E2589 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60261E5128CCFF17004E2589 /* FavoriteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,7 +149,6 @@
 		60261E2F28CA70DA004E2589 /* APODUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODUIComposer.swift; sourceTree = "<group>"; };
 		60261E3128CA7BDE004E2589 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		60261E3328CA7E43004E2589 /* APODViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewController.swift; sourceTree = "<group>"; };
-		60261E3528CA7E5D004E2589 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		60261E3728CA7F4A004E2589 /* APOD.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = APOD.storyboard; sourceTree = "<group>"; };
 		60261E3928CA7F5C004E2589 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		60261E3B28CA80DB004E2589 /* FavoriteUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUIComposer.swift; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		60261E4728CB7E21004E2589 /* RemoteImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataLoader.swift; sourceTree = "<group>"; };
 		60261E4928CBA42C004E2589 /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
 		60261E4C28CBA975004E2589 /* LocalToRemoteFallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalToRemoteFallback.swift; sourceTree = "<group>"; };
+		60261E5128CCFF17004E2589 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,7 +241,6 @@
 			children = (
 				60261D8928CA26DC004E2589 /* AppDelegate.swift */,
 				60261D8B28CA26DC004E2589 /* SceneDelegate.swift */,
-				60261E3528CA7E5D004E2589 /* FavoriteViewController.swift */,
 				60261E3328CA7E43004E2589 /* APODViewController.swift */,
 				60261E3F28CAE5C5004E2589 /* ImageDetailViewController.swift */,
 				60261E3128CA7BDE004E2589 /* TabBarController.swift */,
@@ -254,6 +253,7 @@
 				60261E3928CA7F5C004E2589 /* Favorite.storyboard */,
 				60261E4928CBA42C004E2589 /* DateFormatterHelper.swift */,
 				60261E4C28CBA975004E2589 /* LocalToRemoteFallback.swift */,
+				60261E5128CCFF17004E2589 /* FavoriteTableViewController.swift */,
 			);
 			path = UniverseGallery;
 			sourceTree = "<group>";
@@ -278,6 +278,7 @@
 		60261DBF28CA3314004E2589 /* ImageryFeed */ = {
 			isa = PBXGroup;
 			children = (
+				60261E5028CBD752004E2589 /* Favorite Cache */,
 				60261DFF28CA33F0004E2589 /* Feed Feature */,
 				60261DE528CA33A9004E2589 /* Feed API */,
 				60261DDA28CA334B004E2589 /* Feed Cache */,
@@ -377,6 +378,13 @@
 				60261E2228CA35E9004E2589 /* ImageryEndToEndTest.swift */,
 			);
 			path = ImageryEndToEndTest;
+			sourceTree = "<group>";
+		};
+		60261E5028CBD752004E2589 /* Favorite Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Favorite Cache";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -616,8 +624,8 @@
 				60261E3C28CA80DB004E2589 /* FavoriteUIComposer.swift in Sources */,
 				60261E3028CA70DA004E2589 /* APODUIComposer.swift in Sources */,
 				60261E4B28CBA5E2004E2589 /* DateFormatterHelper.swift in Sources */,
-				60261E3628CA7E5D004E2589 /* FavoriteViewController.swift in Sources */,
 				60261D8A28CA26DC004E2589 /* AppDelegate.swift in Sources */,
+				60261E5328CD00F1004E2589 /* FavoriteTableViewController.swift in Sources */,
 				60261E3228CA7BDE004E2589 /* TabBarController.swift in Sources */,
 				60261D8C28CA26DC004E2589 /* SceneDelegate.swift in Sources */,
 				60261E4D28CBA975004E2589 /* LocalToRemoteFallback.swift in Sources */,

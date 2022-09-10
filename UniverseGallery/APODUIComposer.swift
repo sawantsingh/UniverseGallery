@@ -17,11 +17,11 @@ class APODUIComposer {
         imageDataLoader: ImageDataLoader,
         selection: @escaping (FeedImage) -> Void = { _ in }
     ) -> APODViewController {
-        let controller = makeViewController(title: "Image of the day - Today")
+        let controller = makeViewController(title: "APOD")
         controller.loader = feedLoader
         controller.imageloader = imageDataLoader
         controller.onSelection = {
-            
+                
         }
         return controller
     }

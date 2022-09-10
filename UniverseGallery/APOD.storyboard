@@ -16,13 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jBv-7a-ari">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jBv-7a-ari">
+                                <rect key="frame" x="0.0" y="151" width="414" height="711"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image of the day - Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yqO-HW-Nl1">
+                                <rect key="frame" x="40" y="108" width="334" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fv-vJ-ae4">
                                 <rect key="frame" x="20" y="718" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewO-W2-aNN">
+                                <rect key="frame" x="20" y="750" width="374" height="97"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPn-Pi-aTS">
@@ -42,12 +54,26 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="yC1-zH-pNu">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFp-nz-MmE">
                                 <rect key="frame" x="0.0" y="88" width="336" height="324.5"/>
-                                <connections>
-                                    <action selector="datePickerAction:" destination="eiL-5Y-Fca" eventType="valueChanged" id="McV-ca-E9x"/>
-                                </connections>
-                            </datePicker>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="yC1-zH-pNu">
+                                        <rect key="frame" x="0.0" y="0.0" width="336" height="324"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
+                                        <connections>
+                                            <action selector="datePickerAction:" destination="eiL-5Y-Fca" eventType="valueChanged" id="McV-ca-E9x"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yC1-zH-pNu" firstAttribute="leading" secondItem="xFp-nz-MmE" secondAttribute="leading" id="HbK-Rv-U8C"/>
+                                    <constraint firstAttribute="trailing" secondItem="yC1-zH-pNu" secondAttribute="trailing" id="WIi-CK-b2U"/>
+                                    <constraint firstItem="yC1-zH-pNu" firstAttribute="top" secondItem="xFp-nz-MmE" secondAttribute="top" id="ZlV-44-PV7"/>
+                                    <constraint firstAttribute="bottom" secondItem="yC1-zH-pNu" secondAttribute="bottom" id="sfb-IM-UuB"/>
+                                </constraints>
+                            </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xPG-sA-svW">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
@@ -56,18 +82,25 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5Fv-vJ-ae4" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" constant="20" id="02u-g5-1dv"/>
+                            <constraint firstItem="jBv-7a-ari" firstAttribute="top" secondItem="yqO-HW-Nl1" secondAttribute="bottom" constant="20" id="1O3-Fs-HZK"/>
+                            <constraint firstItem="ewO-W2-aNN" firstAttribute="top" secondItem="5Fv-vJ-ae4" secondAttribute="bottom" constant="8" id="1Ua-1Q-una"/>
+                            <constraint firstItem="yqO-HW-Nl1" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" constant="40" id="9yC-54-Lvq"/>
                             <constraint firstItem="x56-Yv-4ch" firstAttribute="bottom" secondItem="jBv-7a-ari" secondAttribute="bottom" id="FIQ-Xn-oNk"/>
                             <constraint firstItem="jBv-7a-ari" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" id="IsV-IL-e8g"/>
+                            <constraint firstItem="ewO-W2-aNN" firstAttribute="leading" secondItem="5Fv-vJ-ae4" secondAttribute="leading" id="Kcb-3L-nCS"/>
+                            <constraint firstItem="yqO-HW-Nl1" firstAttribute="top" secondItem="fPn-Pi-aTS" secondAttribute="bottom" constant="20" id="LWP-jf-Uxc"/>
                             <constraint firstItem="x56-Yv-4ch" firstAttribute="trailing" secondItem="5Fv-vJ-ae4" secondAttribute="trailing" constant="20" id="O86-fu-b6f"/>
-                            <constraint firstItem="yC1-zH-pNu" firstAttribute="top" secondItem="fPn-Pi-aTS" secondAttribute="bottom" id="RX3-Ws-STu"/>
                             <constraint firstItem="xPG-sA-svW" firstAttribute="centerY" secondItem="ZI0-Qu-HDV" secondAttribute="centerY" id="TYY-5y-kOJ"/>
+                            <constraint firstItem="x56-Yv-4ch" firstAttribute="bottom" secondItem="ewO-W2-aNN" secondAttribute="bottom" constant="15" id="Uv2-tW-nCD"/>
                             <constraint firstItem="fPn-Pi-aTS" firstAttribute="trailing" secondItem="x56-Yv-4ch" secondAttribute="trailing" id="ZXf-sl-UBn"/>
-                            <constraint firstItem="jBv-7a-ari" firstAttribute="top" secondItem="fPn-Pi-aTS" secondAttribute="bottom" id="di4-PT-wf9"/>
+                            <constraint firstItem="ewO-W2-aNN" firstAttribute="trailing" secondItem="5Fv-vJ-ae4" secondAttribute="trailing" id="dGs-WV-sCl"/>
                             <constraint firstItem="x56-Yv-4ch" firstAttribute="trailing" secondItem="jBv-7a-ari" secondAttribute="trailing" id="exP-mg-mLZ"/>
                             <constraint firstItem="xPG-sA-svW" firstAttribute="centerX" secondItem="ZI0-Qu-HDV" secondAttribute="centerX" id="gD2-Nq-pkz"/>
                             <constraint firstItem="fPn-Pi-aTS" firstAttribute="top" secondItem="x56-Yv-4ch" secondAttribute="top" id="gf6-gb-jaF"/>
-                            <constraint firstItem="yC1-zH-pNu" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" id="pEA-RW-zAf"/>
+                            <constraint firstItem="x56-Yv-4ch" firstAttribute="trailing" secondItem="yqO-HW-Nl1" secondAttribute="trailing" constant="40" id="lP9-fD-nsc"/>
+                            <constraint firstItem="xFp-nz-MmE" firstAttribute="top" secondItem="fPn-Pi-aTS" secondAttribute="bottom" id="ljX-fv-HWG"/>
                             <constraint firstItem="x56-Yv-4ch" firstAttribute="bottom" secondItem="5Fv-vJ-ae4" secondAttribute="bottom" constant="120" id="qaJ-gT-27W"/>
+                            <constraint firstItem="xFp-nz-MmE" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" id="qxl-y1-3a7"/>
                             <constraint firstItem="fPn-Pi-aTS" firstAttribute="leading" secondItem="x56-Yv-4ch" secondAttribute="leading" id="uPq-BL-5ya"/>
                         </constraints>
                     </view>
@@ -75,6 +108,9 @@
                     <connections>
                         <outlet property="activityIndicator" destination="xPG-sA-svW" id="PRy-cP-Xnz"/>
                         <outlet property="datePicker" destination="yC1-zH-pNu" id="utq-tf-0oR"/>
+                        <outlet property="datePickerContainer" destination="xFp-nz-MmE" id="0Ew-Dt-JbI"/>
+                        <outlet property="explanationLabel" destination="ewO-W2-aNN" id="hnU-nY-FWJ"/>
+                        <outlet property="imageDateLabel" destination="yqO-HW-Nl1" id="MCT-5n-3Ji"/>
                         <outlet property="imageView" destination="jBv-7a-ari" id="r1x-Pg-WcD"/>
                         <outlet property="navigationBar" destination="fPn-Pi-aTS" id="q4a-w2-XoZ"/>
                         <outlet property="titleLabel" destination="5Fv-vJ-ae4" id="OCf-Ml-tqP"/>
@@ -104,6 +140,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

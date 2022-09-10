@@ -7,6 +7,48 @@
 
 import Foundation
 
+public class CodableImageDataStore {
+    
+    let storeURL: URL
+    
+    public init(storeURL: URL) {
+        self.storeURL = storeURL
+    }
+    
+    public enum Error: Swift.Error {
+      case notFound
+      case unknown
+    }
+    
+    public typealias Result = ImageDataLoader.Result
+    public typealias InsertionCompletion = (Error?) -> Void
+    
+    struct Cache: Codable {
+        let imageData: Data
+    }
+    
+    public func retrieve(from url: URL, completion: @escaping (Result) -> Void) {
+        guard let data = try? Data(contentsOf: url) else {
+            completion(.failure(Error.notFound))
+            return
+        }
+        
+        let decoder = JSONDecoder()
+        let cache = try! decoder.decode(Cache.self, from: data)
+        completion(.success(cache.imageData))
+    }
+    
+    public func insert(_ imageData: Data, url: URL, completion: @escaping InsertionCompletion) {
+        let encoder = JSONEncoder()
+        
+        let cache = Cache(imageData: imageData)
+        let encoded = try! encoder.encode(cache)
+        try! encoded.write(to: url)
+        completion(nil)
+    }
+    
+}
+
 public class CodableFeedStore: FeedStore {
    
     struct Cache: Codable {
@@ -57,7 +99,21 @@ public class CodableFeedStore: FeedStore {
     
     public func insert(_ feed: [LocalFeedImage], timestamp: String, completion: @escaping FeedStore.InsertionCompletion) {
         let encoder = JSONEncoder()
-        let cache = Cache(feed: feed.map(CodableFeedImage.init), timestamp: timestamp)
+        
+        var updatedFeed: [LocalFeedImage] = feed
+        
+        retrieve { [weak self] result in
+            guard self != nil else { return }
+            
+            switch result {
+            case let .found(feed, _):
+                updatedFeed.append(contentsOf: feed)
+            default:
+                break
+            }
+        }
+        
+        let cache = Cache(feed: updatedFeed.map(CodableFeedImage.init), timestamp: timestamp)
         let encoded = try! encoder.encode(cache)
         try! encoded.write(to: storeURL)
         completion(nil)
