@@ -1,8 +1,8 @@
 //
-//  CodableFeedStore.swift
-//  AudioFeed
+//  CodableImageDataStore.swift
+//  ImageryFeed
 //
-//  Created by Kumar, Sawant on 04/07/22.
+//  Created by Kumar, Sawant on 09/09/22.
 //
 
 import Foundation

@@ -1,8 +1,8 @@
 //
-//  LocalFeedItem.swift
-//  AudioFeed
+//  LocalFeedImage.swift
+//  ImageryFeed
 //
-//  Created by Kumar, Sawant on 02/05/22.
+//  Created by Kumar, Sawant on 09/09/22.
 //
 
 import Foundation

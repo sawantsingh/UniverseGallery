@@ -35,7 +35,7 @@ class ImageryEndToEndTest: XCTestCase {
         
         var receivedResult: LoadFeedResult?
         
-        loader.load { result in
+        loader.load(with: "", endDate: "") { result in
             receivedResult = result
             
             exp.fulfill()

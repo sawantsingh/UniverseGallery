@@ -19,7 +19,7 @@ class LocalFeedFromCacheUseCaseTests: XCTestCase {
     func test_load_requestCacheRetrieval() {
         let (sut, store) = makeSUT()
         
-        sut.load { _ in }
+        sut.load(with: "", endDate: "") { _ in }
         
         XCTAssertEqual(store.receivedMessges, [.retrieve])
     }
@@ -44,7 +44,7 @@ class LocalFeedFromCacheUseCaseTests: XCTestCase {
     func test_load_noSideEffectsOnRetrievalError() {
         let (sut, store) = makeSUT()
         
-        sut.load { _ in }
+        sut.load(with: "", endDate: "") { _ in }
         store.completeRetrieval(with: anyNSError())
         
         XCTAssertEqual(store.receivedMessges, [.retrieve])
@@ -53,7 +53,7 @@ class LocalFeedFromCacheUseCaseTests: XCTestCase {
     func test_load_noSideEffectsOnEmptyCache() {
         let (sut, store) = makeSUT()
         
-        sut.load { _ in }
+        sut.load(with: "", endDate: "") { _ in }
         store.completeRetrievalWithEmptyCache()
         
         XCTAssertEqual(store.receivedMessges, [.retrieve])
@@ -64,7 +64,7 @@ class LocalFeedFromCacheUseCaseTests: XCTestCase {
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date())
         
         var receivedResults = [LocalFeedLoader.LoadResult]()
-        sut?.load { receivedResults.append($0) }
+        sut?.load(with: "", endDate: "") { receivedResults.append($0) }
         
         sut = nil
         store.completeRetrievalWithEmptyCache()
@@ -75,7 +75,7 @@ class LocalFeedFromCacheUseCaseTests: XCTestCase {
     private func expect(sut: LocalFeedLoader, toCompleteWith expectedResult: LocalFeedLoader.LoadResult, when action:() -> Void, file: StaticString = #file, line: UInt = #line)  {
         let exp = expectation(description: "wait for load completion")
         
-        sut.load { receivedResult in
+        sut.load(with: "", endDate: "") { receivedResult in
             switch (receivedResult, expectedResult) {
             case let (.success(receivedImages), .success(expectedImages)):
                 XCTAssertEqual(receivedImages, expectedImages, file: file, line: line)
