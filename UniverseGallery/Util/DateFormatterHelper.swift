@@ -1,6 +1,6 @@
 //
 //  DateFormatterHelper.swift
-//  ImageryFeed
+//  UniverseGalleryApp
 //
 //  Created by Kumar, Sawant on 09/09/22.
 //

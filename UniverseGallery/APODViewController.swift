@@ -77,10 +77,8 @@ class APODViewController: UIViewController {
     
     // MARK: Private Methods
     private func showAddToFavorite(show: Bool) {
-        DispatchQueue.main.async {
-            self.addToFavorite.isEnabled = show
-            self.addToFavorite.tintColor = show ? UIColor.systemBlue : UIColor.clear
-        }
+        self.addToFavorite.isEnabled = show
+        self.addToFavorite.tintColor = show ? UIColor.systemBlue : UIColor.clear
     }
     
     private func showActivityIndicator(show: Bool) {
@@ -99,7 +97,7 @@ class APODViewController: UIViewController {
         
         loader?.load(with: date, endDate: date, completion: { [weak self] result in
             guard let self = self else { return }
-
+            
             switch result {
             case .success(let feedImages):
                 guard let feedImage = feedImages.first else { return }
@@ -110,13 +108,14 @@ class APODViewController: UIViewController {
                     self.showAddToFavorite(show: !favoriteItems.contains(feedImage.date))
                 }
                 
-                DispatchQueue.main.async {
-                    self.imageDateLabel.text = feedImage.date
-                    self.titleLabel.text = feedImage.title
-                    self.explanationLabel.text = feedImage.explanation
-                }
-            case .failure(let error):
-                print("Error is \(error)")
+                self.imageDateLabel.text = feedImage.date
+                self.titleLabel.text = feedImage.title
+                self.explanationLabel.text = feedImage.explanation
+            case .failure:
+                let alertController = UIAlertController(title: "Alert", message: "Something went wrong, please search another date.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: .none))
+                self.present(alertController, animated: true, completion: nil)
+                self.showActivityIndicator(show: false)
             }
         })
     }
@@ -131,21 +130,18 @@ class APODViewController: UIViewController {
         let store = CodableImageDataStore(storeURL: imageStoreUrl)
         
         store.retrieve(from: imageStoreUrl) { result in
-
+            
             switch result {
             case let .success(data):
-                self.showActivityIndicator(show: false)
-
                 DispatchQueue.main.async {
+                    self.showActivityIndicator(show: false)
                     if let image = UIImage(data: data) {
                         self.imageView.image = image
                     }
-                    return
                 }
             case .failure:
                 self.loadImageFromRemote(url: url, store: store, storeURL: imageStoreUrl)
             }
-            
         }
     }
     
@@ -153,13 +149,11 @@ class APODViewController: UIViewController {
         imageloader?.load(from: url, completion: { [weak self] result in
             guard let self = self else { return }
             self.showActivityIndicator(show: false)
-
+            
             switch result {
             case .success(let data):
                 if let image = UIImage(data: data) {
-                    
                     store.insert(data, url: storeURL) { _ in }
-                    
                     DispatchQueue.main.async {
                         self.imageView.image = image
                     }

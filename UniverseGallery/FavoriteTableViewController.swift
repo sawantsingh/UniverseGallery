@@ -10,15 +10,15 @@ import ImageryFeed
 
 class FavoriteTableViewController: UITableViewController {
     
+    // MARK: Properties
     var loader: FeedLoader?
-    
     var datasource: [FeedImage] = [] {
         didSet {
             tableView.reloadData()
         }
     }
     
-    var prefetchedImages: [UIImage] = []
+    var prefetchedImages: [URL: UIImage] = [:]
     
     // MARK: IBOutlets
     override func viewDidLoad() {
@@ -26,17 +26,10 @@ class FavoriteTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        guard let favoriteItems = UserDefaults.standard.value(forKey: "FavoriteListStoreKey") as? [String], favoriteItems.count > 0  else {
-            // No Items found in favorite
-            return
-        }
+        guard let favoriteItems = UserDefaults.standard.value(forKey: "FavoriteListStoreKey") as? [String], favoriteItems.count > 0  else { return }
         
         loader?.load(with: "", endDate: "", completion: { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            
+            guard let self = self else { return }
             switch result {
             case .success(let feed):
                 var filtered: [FeedImage] = []
@@ -47,11 +40,10 @@ class FavoriteTableViewController: UITableViewController {
                         }
                     }
                 }
-                
                 for feedItem in filtered {
                     self.loadImage(from: feedItem.url) { image in
                         if let  image = image {
-                            self.prefetchedImages.append(image)
+                            self.prefetchedImages[feedItem.url] = image
                         }
                     }
                 }
@@ -59,13 +51,12 @@ class FavoriteTableViewController: UITableViewController {
                     self.datasource = filtered
                 }
             case .failure: break
-                // received error
+              // Handle sad case
             }
         })
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return datasource.count
     }
     
@@ -78,15 +69,14 @@ class FavoriteTableViewController: UITableViewController {
         cell.dateLabel.text = favoriteItem.date
         cell.explanationLabel.text = favoriteItem.explanation
         
-        let image = prefetchedImages[indexPath.row]
-        let thumbnailImage = image.scaleToSize(aSize: CGSize(width: 150.0, height: 150.0))
-        
-        cell.imageView?.image = thumbnailImage
+        if let image = prefetchedImages[favoriteItem.url] {
+            let thumbnailImage = image.scaleToSize(aSize: CGSize(width: 150.0, height: 150.0))
+            
+            cell.imageView?.image = thumbnailImage
+        }
         
         return cell
     }
-    
-    
     
     private func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         
@@ -106,23 +96,9 @@ class FavoriteTableViewController: UITableViewController {
                     }
                     completion(nil)
                 }
-            case let .failure(error):
+            case .failure:
                 completion(nil)
             }
         }
     }
-}
-
-extension UIImage {
-  func scaleToSize(aSize :CGSize) -> UIImage {
-      if (self.size.equalTo(aSize)) {
-      return self
-    }
-
-    UIGraphicsBeginImageContextWithOptions(aSize, false, 0.0)
-      self.draw(in: CGRect(x: 0, y: 0, width: aSize.width, height: aSize.height))
-      guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return self }
-    UIGraphicsEndImageContext()
-    return image
-  }
 }
