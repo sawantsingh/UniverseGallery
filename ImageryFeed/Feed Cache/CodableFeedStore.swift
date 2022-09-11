@@ -99,15 +99,17 @@ public class CodableFeedStore: FeedStore {
     
     public func insert(_ feed: [LocalFeedImage], timestamp: String, completion: @escaping FeedStore.InsertionCompletion) {
         let encoder = JSONEncoder()
-        
+                
         var updatedFeed: [LocalFeedImage] = feed
         
         retrieve { [weak self] result in
             guard self != nil else { return }
             
             switch result {
-            case let .found(feed, _):
-                updatedFeed.append(contentsOf: feed)
+            case let .found(newFeed, _):
+                if !newFeed.contains(feed.first!) {
+                    updatedFeed.append(contentsOf: newFeed)
+                }
             default:
                 break
             }

@@ -47,11 +47,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func configureWindow() {
-        let tabBar = TabBarController()
+        let tabBar = UITabBarController()
         
         let APODViewController = APODUIComposer.composedWith(feedLoader: localToRemoteFallback, imageDataLoader: RemoteImageDataLoader(client: httpClient))
         
-        tabBar.viewControllers = [APODViewController, FavoriteUIComposer.composedWith()]
+        tabBar.viewControllers = [APODViewController, FavoriteUIComposer.composedWith(loader: localFeedLoader)]
         window?.rootViewController = tabBar
         
         window?.makeKeyAndVisible()

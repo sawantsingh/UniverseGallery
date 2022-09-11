@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import ImageryFeed
 
 class FavoriteUIComposer {
     
     private init() {}
     
-    public static func composedWith() -> FavoriteTableViewController {
+    public static func composedWith(loader: FeedLoader) -> FavoriteTableViewController {
         let controller = makeViewController(title: "Favorite")
+        controller.loader = loader
         return controller
     }
 

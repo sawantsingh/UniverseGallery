@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="88" width="336" height="324.5"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="yC1-zH-pNu">
-                                        <rect key="frame" x="0.0" y="0.0" width="336" height="324"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="336" height="324.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" systemColor="tintColor"/>
                                         <connections>
@@ -107,6 +107,7 @@
                     <navigationItem key="navigationItem" id="BZ3-cK-52v"/>
                     <connections>
                         <outlet property="activityIndicator" destination="xPG-sA-svW" id="PRy-cP-Xnz"/>
+                        <outlet property="addToFavorite" destination="3A3-Li-edi" id="aYs-Te-O3J"/>
                         <outlet property="datePicker" destination="yC1-zH-pNu" id="utq-tf-0oR"/>
                         <outlet property="datePickerContainer" destination="xFp-nz-MmE" id="0Ew-Dt-JbI"/>
                         <outlet property="explanationLabel" destination="ewO-W2-aNN" id="hnU-nY-FWJ"/>
